@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/MapColonies/eslint-config/compare/v3.0.0...v3.0.1) (2021-10-19)
+
+
+### Bug Fixes
+
+* merged prettier/[@typescript-eslint](https://github.com/typescript-eslint) -> prettier ([f34d9dc](https://github.com/MapColonies/eslint-config/commit/f34d9dcf7665c66119fe4865bda964b9492789e0))
+
 ## [3.0.0](https://github.com/MapColonies/eslint-config/compare/v2.2.1...v3.0.0) (2021-10-19)
 
 
