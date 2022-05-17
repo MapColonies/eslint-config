@@ -4,7 +4,6 @@ const namingConventions = [
     selector: 'default',
     format: ['camelCase'],
   },
-
   {
     selector: 'variable',
     format: ['camelCase', 'UPPER_CASE'],
