@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: eslint-config
+  description: Opionated eslint configuration for MapColonies
+  annotations:
+    github.com/project-slug: MapColonies/eslint-config
+  tags: 
+    - nodejs
+    - typescript
+spec:
+  type: library
+  lifecycle: production
+  owner: DevInfra
+  system: npm-packages
