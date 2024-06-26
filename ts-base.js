@@ -181,6 +181,6 @@ module.exports = {
 
     'import/newline-after-import': 'error',
 
-    'eol-last': 'error',
+    'eol-last': 'warn',
   },
 };
