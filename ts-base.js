@@ -90,7 +90,7 @@ module.exports = {
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
 
     '@typescript-eslint/ban-ts-comment': 'warn',
-
+    
     '@typescript-eslint/ban-tslint-comment': 'error',
 
     '@typescript-eslint/ban-types': 'error',
@@ -180,5 +180,7 @@ module.exports = {
     'import/exports-last': 'error',
 
     'import/newline-after-import': 'error',
+
+    'eol-last': 'error',
   },
 };
