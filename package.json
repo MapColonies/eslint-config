@@ -1,6 +1,6 @@
 {
   "name": "@map-colonies/eslint-config",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "eslint configs for map colonies organization",
   "main": "index.js",
   "scripts": {
@@ -26,9 +26,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "engines": {
-    "node": ">=20"
   },
   "peerDependencies": {
     "eslint": "^8.15.0"
