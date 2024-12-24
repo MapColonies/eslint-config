@@ -4,8 +4,9 @@
   "description": "eslint configs for map colonies organization",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "standard-version"
+    "prepare": "husky",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -17,16 +18,6 @@
     "url": "https://github.com/MapColonies/eslint-config/issues"
   },
   "homepage": "https://github.com/MapColonies/eslint-config#readme",
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "engines": {
     "node": ">=20"
   },
@@ -45,8 +36,9 @@
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "commitlint": "^17.0.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.1",
-    "standard-version": "^9.5.0"
+    "husky": "^9.1.7",
+    "@map-colonies/prettier-config": "^0.0.1",
+    "prettier": "^3.3.3",
+    "pretty-quick": "^4.0.0"
   }
 }
