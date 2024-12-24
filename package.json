@@ -18,6 +18,9 @@
     "url": "https://github.com/MapColonies/eslint-config/issues"
   },
   "homepage": "https://github.com/MapColonies/eslint-config#readme",
+  "engines": {
+    "node": ">=20"
+  },
   "peerDependencies": {
     "eslint": "^8.15.0"
   },
