@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/MapColonies/eslint-config/compare/v4.0.0...v5.0.0) (2025-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* added engine setting to package.json ([#34](https://github.com/MapColonies/eslint-config/issues/34))
+
+### Build System
+
+* added engine setting to package.json ([#34](https://github.com/MapColonies/eslint-config/issues/34)) ([dfc01ab](https://github.com/MapColonies/eslint-config/commit/dfc01ab2aaed7e6c6fe3b26f1b27fe30702ca60f))
+
 ## [4.0.0](https://github.com/MapColonies/eslint-config/compare/v3.1.3...v4.0.0) (2023-09-30)
 
 
