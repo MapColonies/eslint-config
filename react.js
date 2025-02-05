@@ -9,4 +9,9 @@ module.exports = {
     'react/hook-use-state': 'error',
     'react/prop-types': 'off',
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 };
