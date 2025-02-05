@@ -180,5 +180,7 @@ module.exports = {
     'import/exports-last': 'error',
 
     'import/newline-after-import': 'error',
+
+    'eol-last': 'error',
   },
 };
