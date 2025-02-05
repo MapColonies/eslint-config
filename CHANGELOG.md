@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/MapColonies/eslint-config/compare/v5.0.0...v5.1.0) (2025-02-05)
+
+
+### Features
+
+* **ts-base:** added eol-last ([#32](https://github.com/MapColonies/eslint-config/issues/32)) ([1d14c32](https://github.com/MapColonies/eslint-config/commit/1d14c32353e7654a4086aaddfa278aca37a392b9))
+
 ## [5.0.0](https://github.com/MapColonies/eslint-config/compare/v4.0.0...v5.0.0) (2025-01-19)
 
 
