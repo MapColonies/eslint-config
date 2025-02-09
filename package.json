@@ -3,11 +3,26 @@
   "version": "5.0.0",
   "description": "eslint configs for map colonies organization",
   "main": "index.js",
+  "exports": {
+    "./ts-base": "./dist/configs/ts-base.js",
+    "./react": "./dist/configs/react.js",
+    "./jest": "./dist/configs/jest.js",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "prepare": "husky",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "prelint:fix": "npm run format:fix",
+    "prelint": "npm run format",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "prepack": "npm run build",
+    "build": "tsc --project tsconfig.json"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MapColonies/eslint-config.git"
@@ -25,10 +40,14 @@
     "eslint": "^9.19.0"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.23.0",
-    "@typescript-eslint/parser": "^8.23.0",
+    "@eslint/js": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import-x": "^4.6.1",
+    "typescript-eslint": "^8.23.0"
+  },
+  "optionalDependencies": {
     "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0"
@@ -38,10 +57,13 @@
     "@map-colonies/commitlint-config": "^1.1.0",
     "@map-colonies/infra-copilot-instructions": "^1.0.0",
     "@map-colonies/prettier-config": "^0.0.1",
+    "@map-colonies/tsconfig": "^1.0.0",
     "@types/eslint": "^9.6.1",
     "commitlint": "^19.6.1",
+    "eslint": "^9.19.0",
     "husky": "^9.1.7",
     "prettier": "^3.3.3",
-    "pretty-quick": "^4.0.0"
+    "pretty-quick": "^4.0.0",
+    "typescript": "^5.7.3"
   }
 }

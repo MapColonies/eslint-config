@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   extends: ['plugin:jest/recommended', 'plugin:jest/style'],
   plugins: ['jest'],
   env: {
