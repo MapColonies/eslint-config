@@ -7,7 +7,7 @@
     "./ts-base": "./dist/configs/ts-base.js",
     "./react": "./dist/configs/react.js",
     "./jest": "./dist/configs/jest.js",
-    "./package.json": "./package.json"
+    "./helpers": "./dist/helpers.js"
   },
   "scripts": {
     "prepare": "husky",
@@ -59,6 +59,7 @@
     "@map-colonies/prettier-config": "^0.0.1",
     "@map-colonies/tsconfig": "^1.0.0",
     "@types/eslint": "^9.6.1",
+    "@types/eslint-config-prettier": "^6.11.3",
     "commitlint": "^19.6.1",
     "eslint": "^9.19.0",
     "husky": "^9.1.7",
