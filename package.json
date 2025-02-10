@@ -28,17 +28,19 @@
     "@typescript-eslint/eslint-plugin": "6.7.3",
     "@typescript-eslint/parser": "6.7.3",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^27.4.0"
+    "eslint-plugin-jest": "^27.4.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
-    "commitlint": "^19.6.1",
-    "@map-colonies/infra-copilot-instructions": "^1.0.0",
     "@map-colonies/commitlint-config": "^1.1.0",
-    "husky": "^9.1.7",
+    "@map-colonies/infra-copilot-instructions": "^1.0.0",
     "@map-colonies/prettier-config": "^0.0.1",
+    "@types/eslint": "^9.6.1",
+    "commitlint": "^19.6.1",
+    "husky": "^9.1.7",
     "prettier": "^3.3.3",
     "pretty-quick": "^4.0.0"
   }
