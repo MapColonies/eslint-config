@@ -4,7 +4,8 @@ import tseslint from 'typescript-eslint';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import tsParser from '@typescript-eslint/parser';
-import { config } from '../helpers';
+import { config } from '../helpers.mjs';
+import { parserOptions } from 'eslint-plugin-import-x/config/recommended.js';
 
 export const namingConventions = [
   'error',
@@ -47,6 +48,7 @@ export const namingConventions = [
 
 const typescriptEslintConfig = config({
   name: 'map-colonies typescript rules',
+
   rules: {
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
     '@typescript-eslint/ban-ts-comment': 'warn',
@@ -109,7 +111,6 @@ const reactNamingConventions = config({
   files: ['**/*.tsx'],
   rules: {
     '@typescript-eslint/naming-convention': [
-      'error',
       ...namingConventions,
       {
         selector: 'variable',
@@ -165,11 +166,10 @@ const combinedConfig = config(
   jestTurnedOffRules,
   reactNamingConventions,
   eslintPluginImportX.flatConfigs.recommended,
-  eslintPluginImportX.flatConfigs.typescript,
+  { name: 'import-x/typescript', ...eslintPluginImportX.flatConfigs.typescript },
   importRulesAndConfig,
   globalIgnoreConfig,
-  eslintConfigPrettier
+  { name: 'eslint-prettier', ...eslintConfigPrettier }
 );
 
 export default combinedConfig;
-module.exports = combinedConfig;

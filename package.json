@@ -2,12 +2,26 @@
   "name": "@map-colonies/eslint-config",
   "version": "5.0.0",
   "description": "eslint configs for map colonies organization",
-  "main": "index.js",
+  "type": "module",
+  "main": "./dist/configs/ts-base.mjs",
+  "types": "./dist/configs/ts-base.d.ts",
   "exports": {
-    "./ts-base": "./dist/configs/ts-base.js",
-    "./react": "./dist/configs/react.js",
-    "./jest": "./dist/configs/jest.js",
-    "./helpers": "./dist/helpers.js"
+    "./ts-base": {
+      "types": "./dist/configs/ts-base.d.ts",
+      "import": "./dist/configs/ts-base.mjs"
+    },
+    "./react": {
+      "types": "./dist/configs/react.d.ts",
+      "import": "./dist/configs/react.mjs"
+    },
+    "./jest": {
+      "types": "./dist/configs/jest.d.ts",
+      "import": "./dist/configs/jest.mjs"
+    },
+    "./helpers": {
+      "types": "./dist/helpers.d.ts",
+      "import": "./dist/helpers.mjs"
+    }
   },
   "scripts": {
     "prepare": "husky",
@@ -18,6 +32,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "prepack": "npm run build",
+    "prebuild": "npm run clean",
+    "clean": "rimraf dist",
     "build": "tsc --project tsconfig.json"
   },
   "files": [
@@ -37,7 +53,25 @@
     "node": ">=20"
   },
   "peerDependencies": {
-    "eslint": "^9.19.0"
+    "eslint": "^9.19.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint-plugin-jest": {
+      "optional": true
+    },
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "globals": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@eslint/js": "^9.19.0",
@@ -46,11 +80,6 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-import-x": "^4.6.1",
     "typescript-eslint": "^8.23.0"
-  },
-  "optionalDependencies": {
-    "eslint-plugin-jest": "^28.11.0",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
@@ -65,6 +94,7 @@
     "husky": "^9.1.7",
     "prettier": "^3.3.3",
     "pretty-quick": "^4.0.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "rimraf": "^6.0.1"
   }
 }
