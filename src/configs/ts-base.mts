@@ -1,12 +1,23 @@
 import type { Linter } from 'eslint';
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import { configs as tsEslintConfigs } from 'typescript-eslint';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import tsParser from '@typescript-eslint/parser';
 import { config } from '../helpers.mjs';
-import { parserOptions } from 'eslint-plugin-import-x/config/recommended.js';
 
+/**
+ * ESLint naming convention rules for TypeScript projects
+ *
+ * Defines naming patterns for:
+ * - Default identifiers (camelCase)
+ * - Variables (camelCase, UPPER_CASE, PascalCase for providers)
+ * - Parameters (camelCase with optional leading underscore)
+ * - Private members (camelCase)
+ * - Enum members (UPPER_CASE)
+ * - Types (PascalCase)
+ * - Quoted properties (any format)
+ */
 export const namingConventions = [
   'error',
   {
@@ -41,13 +52,27 @@ export const namingConventions = [
     format: ['UPPER_CASE'],
   },
   {
+    selector: [
+      'classProperty',
+      'objectLiteralProperty',
+      'typeProperty',
+      'classMethod',
+      'objectLiteralMethod',
+      'typeMethod',
+      'accessor',
+      'enumMember',
+    ],
+    format: null,
+    modifiers: ['requiresQuotes'],
+  },
+  {
     selector: 'typeLike',
     format: ['PascalCase'],
   },
 ] as const satisfies Linter.RuleEntry;
 
-const typescriptEslintConfig = config({
-  name: 'map-colonies typescript rules',
+const typescriptEslintRules = config({
+  name: 'map-colonies/typescript-eslint/rules',
 
   rules: {
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
@@ -97,7 +122,7 @@ const typescriptEslintConfig = config({
 
 // This is not in the jest config as it only turns rules off, and needs to be applied after the other rules
 const jestTurnedOffRules = config({
-  name: 'map-colonies disabled rules for jest',
+  name: 'map-colonies/jest/disabled-rules',
   files: ['**/*.spec.ts?(x)', '**/*.test.ts?(x)'],
   rules: {
     '@typescript-eslint/no-magic-numbers': 'off',
@@ -107,7 +132,7 @@ const jestTurnedOffRules = config({
 
 // // This is not in the react config as it only turns rules off, and needs to be applied after the other rules
 const reactNamingConventions = config({
-  name: 'map-colonies react naming conventions',
+  name: 'map-colonies/react/naming-conventions',
   files: ['**/*.tsx'],
   rules: {
     '@typescript-eslint/naming-convention': [
@@ -122,7 +147,7 @@ const reactNamingConventions = config({
 });
 
 const importRulesAndConfig = config({
-  name: 'map-colonies import-x rules',
+  name: 'map-colonies/import-x/rules',
   files: ['**/*.ts?(x)'],
   ignores: ['eslint.config.*'],
   languageOptions: {
@@ -136,12 +161,12 @@ const importRulesAndConfig = config({
       {
         pathGroups: [
           {
-            pattern: '\@**',
+            pattern: '@**',
             group: 'external',
             position: 'after',
           },
           {
-            pattern: '\@*/**',
+            pattern: '@*/**',
             group: 'external',
             position: 'after',
           },
@@ -155,21 +180,52 @@ const importRulesAndConfig = config({
 });
 
 const globalIgnoreConfig = config({
-  name: 'map-colonies global ignore',
+  name: 'map-colonies/global-ignore',
   ignores: ['.husky', 'coverage', 'reports', 'dist', 'node_modules', '**/*.{js,mjs,cjs}', 'helm'],
+});
+
+const parserOptions = config({
+  name: 'map-colonies/parser-options',
+  languageOptions: {
+    parserOptions: {
+      projectService: true,
+      tsconfigRootDir: process.cwd(),
+    },
+  },
 });
 
 const combinedConfig = config(
   eslint.configs.recommended,
-  tseslint.configs.recommendedTypeChecked,
-  typescriptEslintConfig,
+  tsEslintConfigs.recommendedTypeChecked,
+  typescriptEslintRules,
   jestTurnedOffRules,
   reactNamingConventions,
   eslintPluginImportX.flatConfigs.recommended,
   { name: 'import-x/typescript', ...eslintPluginImportX.flatConfigs.typescript },
   importRulesAndConfig,
   globalIgnoreConfig,
-  { name: 'eslint-prettier', ...eslintConfigPrettier }
+  parserOptions,
+  { name: 'eslint-prettier/disabled-rules', ...eslintConfigPrettier }
 );
 
+/**
+ * Combined ESLint configuration for TypeScript projects
+ * Includes:
+ * - ESLint recommended rules
+ * - TypeScript-ESLint recommended rules with type checking
+ * - Custom TypeScript rules
+ * - Jest-specific rule overrides
+ * - React component naming conventions
+ * - Import organization rules
+ * - Global ignores for build artifacts and dependencies
+ * - Parser configuration
+ * - Prettier integration
+ *
+ * @group configs
+ * @example
+ * import tsBaseConfig from '@map-colonies/eslint-config/ts-base';
+ * import { config } from '@map-colonies/eslint-config/helpers';
+ *
+ * export default config(tsBaseConfig);
+ */
 export default combinedConfig;

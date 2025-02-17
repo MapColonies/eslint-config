@@ -1,6 +1,7 @@
 # ESLint config
 
-A collection of ESLint configs for various frameworks and environments.
+A collection of [ESLint](https://eslint.org/) configs for various frameworks and environments.
+The package only supports eslint 9 and above using the flat configuration.
 
 ## Available Configs
 
@@ -10,40 +11,47 @@ A collection of ESLint configs for various frameworks and environments.
 
 ## Installation
 
+### base
 ```bash
 $ npm install --save-dev eslint @map-colonies/eslint-config
 ```
 
-or
-
-```bash
-$ yarn add --dev eslint @map-colonies/eslint-config
+### react
 ```
+$ npm install --save-dev @map-colonies/eslint-config eslint-plugin-react eslint-plugin-react-hooks
+```
+
+### jest
+```
+$ npm install --save-dev @map-colonies/eslint-config eslint-plugin-jest
+```
+
 
 ## Usage
 
-Add the configs you want to the extend section of your `eslintConfig` of your `package.json`, or to your `.eslintrc` configuration file.
+Add the configs you want to the eslint configuration file of your choice. In this example we are using the file `eslint.config.mjs`
+For more information check the following link [Configuration Files
+](https://eslint.org/docs/latest/use/configure/configuration-files).
 <br/>
 **Note:** make sure to add `ts-base` last.
 
-```json
- "eslintConfig": {
-    "extends": [
-        "@map-colonies/eslint-config/react",
-        "@map-colonies/eslint-config/ts-base"
-      ]
-  }
+```javascript
+import tsBaseConfig from '@map-colonies/eslint-config/ts-base';
+import { config } from '@map-colonies/eslint-config/helpers';
+
+export default config(tsBaseConfig);
+
 ```
 
-Then add the path to your TypeScript configuration file to the `parserOptions`
+## Debug
+If you want to check the ESLint configuration, debug problems or just see the final configuration, you can the following command that will open the eslint configuration UI in your browser.
 
-```json
-"eslintConfig": {
-    "parserOptions": {
-      "project": "./path/to/your/tsconfig.json"
-    }
-  }
+```bash
+npx eslint --inspect-config .
 ```
+
+For more information check the following link [debug](https://eslint.org/docs/latest/use/configure/debug).
+
 
 ## Adding new Configs
 

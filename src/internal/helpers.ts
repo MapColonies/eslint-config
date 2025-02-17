@@ -1,6 +1,11 @@
-export async function importOrThrow<T>(modulePath: string): Promise<T> {
+export async function importOrThrow<T extends object>(modulePath: string): Promise<T> {
   try {
-    return (await import(modulePath)).default;
+    const imported = (await import(modulePath)) as T;
+
+    if ('default' in imported) {
+      return imported.default as T;
+    }
+    return imported;
   } catch (error) {
     throw new Error(`Failed to import optional module '${modulePath}', make sure its installed and try again`, { cause: error });
   }

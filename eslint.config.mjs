@@ -1,13 +1,5 @@
-import config from './dist/configs/ts-base.js';
-import tseslint from 'typescript-eslint';
+import baseConfig from './dist/configs/ts-base.mjs';
+import jestConfig from './dist/configs/jest.mjs';
+import { config } from './dist/helpers.mjs';
 
-console.log(config);
-
-export default tseslint.config(config.default, {
-  languageOptions: {
-    parserOptions: {
-      projectService: true,
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+export default config(jestConfig, baseConfig);

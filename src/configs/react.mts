@@ -1,36 +1,22 @@
+/**
+ * @module react
+ * aaaa
+ */
 import type globals from 'globals';
 import type reactPluginType from 'eslint-plugin-react';
-// // @ts-ignore
-// import pluginReactHooks from 'eslint-plugin-react-hooks';
+import type { plugin } from 'typescript-eslint';
+import type tseslint from 'typescript-eslint';
 import { config } from '../helpers.mjs';
 import { importOrThrow } from '../internal/helpers.js';
 
+type PluginReactHooks = typeof plugin & { configs: { recommended: { rules: tseslint.ConfigWithExtends['rules'] } } };
+
 const reactPlugin = await importOrThrow<typeof reactPluginType>('eslint-plugin-react');
-const pluginReactHooks = await importOrThrow<any>('eslint-plugin-react-hooks');
+const pluginReactHooks = await importOrThrow<PluginReactHooks>('eslint-plugin-react-hooks');
 const importedGlobals = await importOrThrow<typeof globals>('globals');
-// export default {
-//   extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'plugin:react-hooks/recommended'],
-//   env: {
-//     browser: true,
-//   },
-//   rules: {
-//     'react/boolean-prop-naming': 'error',
-//     'react/hook-use-state': 'error',
-//     'react/prop-types': 'off',
-//   },
-//   settings: {
-//     react: {
-//       version: 'detect',
-//     },
-//   },
-// };
 
-// https://github.com/facebook/react/pull/28773#issuecomment-2422831582
-
-console.log(reactPlugin.configs.flat);
-
-const reactRules = config(reactPlugin.configs.flat.recommended ?? {}, reactPlugin.configs.flat?.['jsx-runtime'] ?? {}, {
-  name: 'map-colonies react rules',
+const reactRules = config(reactPlugin.configs.flat.recommended ?? {}, reactPlugin.configs.flat['jsx-runtime'] ?? {}, {
+  name: 'map-colonies/react/rules',
   files: ['**/*.tsx'],
   languageOptions: {
     globals: importedGlobals.browser,
@@ -48,10 +34,28 @@ const reactRules = config(reactPlugin.configs.flat.recommended ?? {}, reactPlugi
 });
 
 const reactHooksRules = config({
-  name: 'map-colonies react hooks rules',
+  name: 'map-colonies/react-hooks/rules',
   files: ['**/*.tsx'],
   plugins: { 'react-hooks': pluginReactHooks },
   rules: pluginReactHooks.configs.recommended.rules,
 });
 
+/**
+ * Combined React and React Hooks ESLint configuration
+ *
+ * Provides ESLint rules for React and React Hooks, including:
+ * - React recommended rules
+ * - JSX runtime configuration
+ * - Browser globals
+ * - React version detection
+ * - Custom React rules (boolean prop naming, useState hook usage)
+ * - React Hooks recommended rules
+ *
+ * @group configs
+ * @example
+ * import reactConfig from '@map-colonies/eslint-config/react';
+ * import { config } from '@map-colonies/eslint-config/helpers';
+ *
+ * export default config(reactConfig);
+ */
 export default config(reactRules, reactHooksRules);
