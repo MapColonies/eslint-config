@@ -2,7 +2,7 @@
   "extends": "@map-colonies/tsconfig/tsconfig-library",
   "compilerOptions": {
     "noEmit": false,
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
   "include": ["src", "tests"],
   "exclude": ["dist", "node_modules"]
