@@ -1,8 +1,3 @@
-/**
- * @module react
- * aaaa
- */
-import type globals from 'globals';
 import type reactPluginType from 'eslint-plugin-react';
 import type { plugin } from 'typescript-eslint';
 import type tseslint from 'typescript-eslint';
@@ -13,7 +8,7 @@ type PluginReactHooks = typeof plugin & { configs: { recommended: { rules: tsesl
 
 const reactPlugin = await importOrThrow<typeof reactPluginType>('eslint-plugin-react');
 const pluginReactHooks = await importOrThrow<PluginReactHooks>('eslint-plugin-react-hooks');
-const importedGlobals = await importOrThrow<typeof globals>('globals');
+const importedGlobals = await importOrThrow<{ browser: Exclude<tseslint.ConfigArray[0]['languageOptions'], undefined>['globals'] }>('globals');
 
 const reactRules = config(reactPlugin.configs.flat.recommended ?? {}, reactPlugin.configs.flat['jsx-runtime'] ?? {}, {
   name: 'map-colonies/react/rules',
