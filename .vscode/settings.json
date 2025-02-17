@@ -13,5 +13,6 @@
     {
       "file": "node_modules/@map-colonies/infra-copilot-instructions/instructions/code.md"
     }
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
