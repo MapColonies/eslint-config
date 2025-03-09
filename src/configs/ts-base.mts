@@ -87,7 +87,7 @@ const typescriptEslintRules = config({
     curly: 'error',
     camelcase: 'off',
     'no-lonely-if': 'error',
-    '@typescript-eslint/naming-convention': namingConventions,
+    '@typescript-eslint/naming-convention': naming_Conventions,
     '@typescript-eslint/no-base-to-string': 'warn',
     '@typescript-eslint/no-confusing-non-null-assertion': 'error',
     '@typescript-eslint/no-extraneous-class': 'warn',
@@ -136,7 +136,7 @@ const reactNamingConventions = config({
   files: ['**/*.tsx'],
   rules: {
     '@typescript-eslint/naming-convention': [
-      ...namingConventions,
+      ...naming_Conventions,
       {
         selector: 'variable',
         format: ['camelCase', 'PascalCase'],
