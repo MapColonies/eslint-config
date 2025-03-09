@@ -20,14 +20,19 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Run TS Project linters
-        uses: wearerequired/lint-action@v2
-        with:
-          github_token: ${{ secrets.github_token }}
-          # Enable linters
-          eslint: true
-          prettier: true
-          eslint_extensions: 'ts,mts,cts'
+      # - name: Run prettier
+      #   run: npm run format
+
+      - name: Run eslint
+        run: npm run lint
+      # - name: Run TS Project linters
+      #   uses: wearerequired/lint-action@v2
+      #   with:
+      #     github_token: ${{ secrets.github_token }}
+      #     # Enable linters
+      #     eslint: true
+      #     prettier: true
+      #     eslint_extensions: 'ts,mts,cts'
 
   tests:
     name: Run Tests

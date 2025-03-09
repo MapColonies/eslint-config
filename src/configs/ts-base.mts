@@ -18,7 +18,7 @@ import { config } from '../helpers.mjs';
  * - Types (PascalCase)
  * - Quoted properties (any format)
  */
-export const namingConventions = [
+export const naming_Conventions = [
   'error',
   {
     selector: 'default',
