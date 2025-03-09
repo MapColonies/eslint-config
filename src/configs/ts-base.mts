@@ -18,7 +18,7 @@ import { config } from '../helpers.mjs';
  * - Types (PascalCase)
  * - Quoted properties (any format)
  */
-export const naming_Conventions = [
+export const namingConventions = [
   'error',
   {
     selector: 'default',
@@ -87,7 +87,7 @@ const typescriptEslintRules = config({
     curly: 'error',
     camelcase: 'off',
     'no-lonely-if': 'error',
-    '@typescript-eslint/naming-convention': naming_Conventions,
+    '@typescript-eslint/naming-convention': namingConventions,
     '@typescript-eslint/no-base-to-string': 'warn',
     '@typescript-eslint/no-confusing-non-null-assertion': 'error',
     '@typescript-eslint/no-extraneous-class': 'warn',
@@ -136,7 +136,7 @@ const reactNamingConventions = config({
   files: ['**/*.tsx'],
   rules: {
     '@typescript-eslint/naming-convention': [
-      ...naming_Conventions,
+      ...namingConventions,
       {
         selector: 'variable',
         format: ['camelCase', 'PascalCase'],
