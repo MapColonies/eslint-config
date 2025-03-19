@@ -14,6 +14,7 @@ const jestConfig = config({
   rules: {
     ...jestPlugin.configs.recommended.rules,
     ...jestPlugin.configs.style.rules,
+    'jest/padding-around-all': 'warn',
   },
 });
 
