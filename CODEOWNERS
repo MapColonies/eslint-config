@@ -1,1 +1,1 @@
-*.js @syncush
+src/configs/*.ts @syncush
