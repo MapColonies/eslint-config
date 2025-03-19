@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/MapColonies/eslint-config/compare/v6.0.0...v6.1.0) (2025-03-19)
+
+
+### Features
+
+* **jest-config:** set jest/padding-around-all rule to warn ([#73](https://github.com/MapColonies/eslint-config/issues/73)) ([6763751](https://github.com/MapColonies/eslint-config/commit/67637517827e8e1b3ecd09ddadd2d59fdcaaf907))
+
 ## [6.0.0](https://github.com/MapColonies/eslint-config/compare/v5.0.0...v6.0.0) (2025-03-09)
 
 
