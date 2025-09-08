@@ -1,3 +1,4 @@
+import nodePlugin from 'eslint-plugin-n';
 import type { Linter } from 'eslint';
 import eslint from '@eslint/js';
 import { configs as tsEslintConfigs } from 'typescript-eslint';
@@ -84,6 +85,7 @@ const typescriptEslintRules = config({
     '@typescript-eslint/member-ordering': 'warn',
     '@typescript-eslint/method-signature-style': 'error',
     '@typescript-eslint/no-empty-interface': 'off',
+    'object-shorthand': 'error',
     curly: 'error',
     camelcase: 'off',
     'no-lonely-if': 'error',
@@ -179,6 +181,17 @@ const importRulesAndConfig = config({
   },
 });
 
+const pluginNodeRules = config({
+  rules: {
+    'n/prefer-node-protocol': [
+      'error',
+      {
+        version: '>=20.0.0',
+      },
+    ],
+  },
+});
+
 const globalIgnoreConfig = config({
   name: 'map-colonies/global-ignore',
   ignores: ['.husky', 'coverage', 'reports', 'dist', 'node_modules', '**/*.{js,mjs,cjs}', 'helm'],
@@ -198,6 +211,8 @@ const combinedConfig = config(
   eslint.configs.recommended,
   tsEslintConfigs.recommendedTypeChecked,
   typescriptEslintRules,
+  nodePlugin.configs['flat/recommended-script'],
+  pluginNodeRules,
   jestTurnedOffRules,
   reactNamingConventions,
   eslintPluginImportX.flatConfigs.recommended,
