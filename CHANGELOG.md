@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/MapColonies/eslint-config/compare/v6.0.0...v6.1.0) (2025-11-11)
+
+
+### Features
+
+* **jest-config:** set jest/padding-around-all rule to warn ([#73](https://github.com/MapColonies/eslint-config/issues/73)) ([6763751](https://github.com/MapColonies/eslint-config/commit/67637517827e8e1b3ecd09ddadd2d59fdcaaf907))
+
+
+### Dependency Updates
+
+* bump eslint-config-prettier from 10.0.1 to 10.1.5 ([#91](https://github.com/MapColonies/eslint-config/issues/91)) ([a7a43a8](https://github.com/MapColonies/eslint-config/commit/a7a43a81706dc9e417a770fc0bd0aa3f8a34401e))
+* bump eslint-plugin-jest from 27.4.0 to 28.11.0 ([#41](https://github.com/MapColonies/eslint-config/issues/41)) ([8348db3](https://github.com/MapColonies/eslint-config/commit/8348db325aed71ca3775e1eadce34c9283df709c))
+* bump typescript-eslint from 8.23.0 to 8.32.0 ([#90](https://github.com/MapColonies/eslint-config/issues/90)) ([2315b9e](https://github.com/MapColonies/eslint-config/commit/2315b9e6af5ef40a5f1c9b3c39dd7cadc3196af5))
+
 ## [6.0.0](https://github.com/MapColonies/eslint-config/compare/v5.0.0...v6.0.0) (2025-03-09)
 
 
